@@ -1,9 +1,4 @@
-### Menu
-* [Accueil](README.md)
-* [Etapes de développement](_etape_dev.md)
-* [Cas d'usage](_uc.md)
-
-| Titre                             | Description                                                                                                                                                           | Développé |
+| Titre                             | Description                                                                                                                                                           | D?velopp? |
 |:----------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | S'inscrire                        | En tant qu'utilisateur, <br/>je veux m'inscrire en sur le site <br/>afin de profiter de l'outil Witcher Toolkit                                                       |           |
 | Se connecter                      | En tant qu'utilisateur, <br/>je veux me connecter sur le site <br/>afin de préparer une partie de JDR.                                                                |           |
