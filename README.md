@@ -2,6 +2,13 @@
 * [Fonctionnalités](_fonctionnalites.md)
 * [Cas d'usage](_uc.md)
 
+Au moment du commit, le faire en ligne de commande
+````gitexclude
+git add .
+git commit -m "commentaire"
+git push -u origin main
+````
+
 ---
 ### exemple notations makdown
 [Lien vers la section Structure](#structure)
