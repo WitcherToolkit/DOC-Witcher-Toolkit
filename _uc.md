@@ -1,13 +1,13 @@
 ### Menu
 * [Accueil](README.md)
-* [Fonctionnalités](_fonctionnalites.md)
+* [Etapes de développement](_etape_dev.md)
 * [Cas d'usage](_uc.md)
 
 | Titre                             | Description                                                                                                                                                           | Développé |
 |:----------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | S'inscrire                        | En tant qu'utilisateur, <br/>je veux m'inscrire en sur le site <br/>afin de profiter de l'outil Witcher Toolkit                                                       |           |
 | Se connecter                      | En tant qu'utilisateur, <br/>je veux me connecter sur le site <br/>afin de préparer une partie de JDR.                                                                |           |
-| Profil                            | En tant qu'utilisateur, <br/>je veux afficher modifier mon profil <br/>afin de le mettre à jours                                                                      |           |
+| Gestion du profil                 | En tant qu'utilisateur, <br/>je veux afficher modifier mon profil <br/>afin de le mettre à jours                                                                      |           |
 | Accueil connecté                  | En tant qu'utilisateur, <br/>je veux être redirigé sur la page d'accueil connecté <br/>afin d'accéder à mes fiches de personnages.                                    |           |
 | Gestion des races                 | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des races <br/>afin d'avoir à jour les informations concernant les races                       |           |
 | Consultation des races            | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des races <br/>afin d'informer le joueur des races existantes                                         |           |
@@ -16,7 +16,7 @@
 | Gestion des compétences           | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des compétences <br/>afin d'avoir à jour les informations concernant les compétences           |           |
 | Consultation des compétences      | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des compétences <br/>afin d'informer le joueur des compétences existantes                             |           |
 | Gestion des sorts                 | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des sorts <br/>afin d'avoir à jour les informations concernant les sorts                       |           |
-| Consultation des sort             | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des sorts <br/>afin d'informer le joueur des sorts existant                                           |           |
+| Consultation des sorts            | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des sorts <br/>afin d'informer le joueur des sorts existant                                           |           |
 | Gestion des rituels               | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des rituels <br/>afin d'avoir à jour les informations concernant les rituels                   |           |
 | Consultation des rituels          | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des rituels <br/>afin d'informer le joueur des rituels existant                                       |           |
 | Gestion des signes                | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des signes <br/>afin d'avoir à jour les informations concernant les signes                     |           |
@@ -29,4 +29,3 @@
 | Consultation des Joueurs          | En tant qu'utilisateur, <br/>je veux pouvoir consulter seulement la liste des joueurs que j'ai créé <br/>afin de pouvoir voir quels personnages ils jouent            |           |
 | Gestion de la fiche personnage    | En tant qu'utilisateur, <br/>je veux ajouter, modifier et supprimer des personnages <br/>afin de jouer au JDR                                                         |           |
 | Consultation des Joueurs          | En tant qu'utilisateur, <br/>je veux pouvoir consulter seulement la liste des fiches personnages que j'ai créé <br/>afin d'y accéder plus facilement                  |           |
-|                                   | En tant que <br/>je veux <br/>afin de                                                                                                                                 |           |
