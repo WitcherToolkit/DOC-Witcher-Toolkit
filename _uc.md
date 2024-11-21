@@ -1,57 +1,32 @@
-### S'inscrire
-**En tant qu**'utilisateur, **je veux** m'inscrire en sur le site **afin de** profiter de l'outil Witcher Toolkit
-### Se connecter
-**En tant qu**'utilisateur, **je veux** me connecter sur le site **afin de** préparer une partie de JDR.
-### Accueil connecté
-**En tant qu**'utilisateur, **je veux** être redirigé sur la page d'accueil connecté **afin d**'accéder à mes fiches de personnages.
+### Menu
+* [Accueil](README.md)
+* [Fonctionnalités](_fonctionnalites.md)
+* [Cas d'usage](_uc.md)
 
----
-## // TODO suite a mettre au propre
-### Compte administrateur
-**En tant que** **je veux** **afin de**
-"En tant administrateur je peux alimenter la BDD du marchand, des PNJ type
-et des éléments concernant la création d'un personnage. L'administateur à plus
-de droit qu'un utilisateur."
-### Gestion des races
-"En tant qu'administrateur je peux ajouter, modifier, supprimer des races
-jouables."
-### Gestion des sorts
-"En tant qu'administrateur je peux ajouter, modifier, supprimer la liste des sort
-disponible."
-### Gestion des rituels
-"En tant qu'administrateur je peux ajouter, modifier, supprimer la liste des rituels
-disponible."
-### Gestion des signes
-"En tant qu'administrateur je peux ajouter, modifier, supprimer la liste des signes
-disponible."
-### Gestion du marchand
-"En tant qu'administrateur je peux ajouter, modifier, supprimer la liste des
-articles en vente."
-### Gestion des Talens
-"En tant qu'administrateur je peux ajouter, modifier, supprimer la liste des
-talens."
-### Gestion des PNJ
-En tant qu'administateur je peux créer des fiches de PNJ type.
-### Profil
-Une fois connecté, l'utilisateur peut afficher et modifier sont profil
-### Gestion des joueurs
-"Un utilisateur peut ajouter, modifier, supprimer une liste de joueur. Celle-ci
-n'est visible que pas l'utilisateur"
-### Consultation des races
-Un utilisateur peux consulter la liste des races
-### Consultation des sorts
-Un utilisateur peux consulter la liste des sort
-### Consultation des rituels
-Un utilisateur peux consulter la liste des rituels
-### Consultation des signes
-Un utilisateur peux consulter la liste des signes
-### Créer une fiche personnage
-Un utilisateur peux créer la fiche d'un personnage
-### Lister des personnages
-Un utilisateur peut accéder à la liste des personnages qu'il à crée
-### Afficher
-"Un utilisateur peut afficher la ficher d'un personnage. Cette ficher est modifiable
-à tout moment."
-### Consultation du marchand
-"Un utilisateur peut consulter la liste des arcticle disponible à partir d'un fiche
-personnage."
+| Titre                             | Description                                                                                                                                                           | Développé |
+|:----------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| S'inscrire                        | En tant qu'utilisateur, <br/>je veux m'inscrire en sur le site <br/>afin de profiter de l'outil Witcher Toolkit                                                       |           |
+| Se connecter                      | En tant qu'utilisateur, <br/>je veux me connecter sur le site <br/>afin de préparer une partie de JDR.                                                                |           |
+| Profil                            | En tant qu'utilisateur, <br/>je veux afficher modifier mon profil <br/>afin de le mettre à jours                                                                      |           |
+| Accueil connecté                  | En tant qu'utilisateur, <br/>je veux être redirigé sur la page d'accueil connecté <br/>afin d'accéder à mes fiches de personnages.                                    |           |
+| Gestion des races                 | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des races <br/>afin d'avoir à jour les informations concernant les races                       |           |
+| Consultation des races            | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des races <br/>afin d'informer le joueur des races existantes                                         |           |
+| Gestion des caractéristiques      | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des caractéristiques <br/>afin d'avoir à jour les informations concernant les caractéristiques |           |
+| Consultation des caractéristiques | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des caractéristiques <br/>afin d'informer le joueur des caractéristiques existantes                   |           |
+| Gestion des compétences           | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des compétences <br/>afin d'avoir à jour les informations concernant les compétences           |           |
+| Consultation des compétences      | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des compétences <br/>afin d'informer le joueur des compétences existantes                             |           |
+| Gestion des sorts                 | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des sorts <br/>afin d'avoir à jour les informations concernant les sorts                       |           |
+| Consultation des sort             | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des sorts <br/>afin d'informer le joueur des sorts existant                                           |           |
+| Gestion des rituels               | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des rituels <br/>afin d'avoir à jour les informations concernant les rituels                   |           |
+| Consultation des rituels          | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des rituels <br/>afin d'informer le joueur des rituels existant                                       |           |
+| Gestion des signes                | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des signes <br/>afin d'avoir à jour les informations concernant les signes                     |           |
+| Consultation des signes           | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des signes <br/>afin d'informer le joueur des signes existant                                         |           |
+| Gestion des marchandises          | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des marchandises de la liste de vente <br/>afin de mettre a disposition ces articles           |           |
+| Consultation des marchandises     | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des marchandises auprès d'un marchand <br/>afin de pouvoir les proposer aux joueurs                   |           |
+| Gestion des PNJ                   | En tant qu'administrateur, <br/>je veux ajouter, modifier et supprimer des PNJ <br/>afin que les utilisateurs puissent les récupérer                                  |           |
+| Consultation des PNJ              | En tant qu'utilisateur, <br/>je veux pouvoir consulter la liste des PNJ <br/>afin de pouvoir choisir quel monstres choisir                                            |           |
+| Gestion des Joueurs               | En tant qu'utilisateur, <br/>je veux ajouter, modifier et supprimer des PNJ <br/>afin de gérer mes scenarios                                                          |           |
+| Consultation des Joueurs          | En tant qu'utilisateur, <br/>je veux pouvoir consulter seulement la liste des joueurs que j'ai créé <br/>afin de pouvoir voir quels personnages ils jouent            |           |
+| Gestion de la fiche personnage    | En tant qu'utilisateur, <br/>je veux ajouter, modifier et supprimer des personnages <br/>afin de jouer au JDR                                                         |           |
+| Consultation des Joueurs          | En tant qu'utilisateur, <br/>je veux pouvoir consulter seulement la liste des fiches personnages que j'ai créé <br/>afin d'y accéder plus facilement                  |           |
+|                                   | En tant que <br/>je veux <br/>afin de                                                                                                                                 |           |

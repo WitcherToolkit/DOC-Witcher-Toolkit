@@ -1,3 +1,8 @@
+### Menu
+* [Accueil](README.md)
+* [Fonctionnalités](_fonctionnalites.md)
+* [Cas d'usage](_uc.md)
+
 ## lot 1 MVP
 Dans un premier temps l'utilisateur peut à minima :
 - se connecter et modifier son profil

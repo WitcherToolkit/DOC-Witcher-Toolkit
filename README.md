@@ -1,4 +1,5 @@
-## Menu
+### Menu
+* [Accueil](README.md)
 * [Fonctionnalités](_fonctionnalites.md)
 * [Cas d'usage](_uc.md)
 
