@@ -25,7 +25,7 @@
 
 ### <a name="etape-0"></a>Étapes 0
 Schema merise (en cours de rédaction) :
-![](src\main\resoures\img\Diagrame-bdd.jpg "Diagramme BDD")
+![](src\main\resoures\img\Diagramme-bdd.jpg "Diagramme BDD")
 
 Liste des tables et leur description :
 
