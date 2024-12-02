@@ -24,7 +24,9 @@
 ## Précisions sur les Étapes
 
 ### <a name="etape-0"></a>Étapes 0
-Lien vers le schéma : [Diagramme-bdd.drawio](https://app.diagrams.net/#Wfe814b71bbb11a74%2FFE814B71BBB11A74!s0db52099f7bb45c987e0024e087fd3c5#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D)
+Schema merise (en cours de rédaction) :
+![](src\main\resoures\img\Diagrame-bdd.jpg "Diagramme BDD")
+
 Liste des tables et leur description :
 
 |         NOM TABLE          | Description                                                                                                                   |
