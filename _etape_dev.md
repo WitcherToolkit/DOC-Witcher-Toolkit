@@ -31,7 +31,6 @@ Schema merise :
 
 Liste des tables et leur description :
 
-
 |          NOM TABLE          | Description                                                                                                                     |
 | :-------------------------: | :------------------------------------------------------------------------------------------------------------------------------ |
 |            USER            | Les utilisateurs de l'application (les maîtres de jeux).<br/> Un utilisateur peut posséder 0 à n fiches de personnage.       |
@@ -48,9 +47,9 @@ Liste des tables et leur description :
 | CARACTÉRISTIQUE/PERSONNAGE | Valeur d'une caractéristique donnée pour un personnage donné.                                                                |
 |                            |                                                                                                                                 |
 
-### <a name="etape-1"></a>Etape 1
+### <a name="etape-1"></a>Étape 1
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Coder en dur la partie front permet d'avoir un bon aperçu du
 
 ### <a name="etape-2"></a>Étapes 2
 
