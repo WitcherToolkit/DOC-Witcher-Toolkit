@@ -7,5 +7,6 @@
 
 # Vocabulaire
 - **JDR** (Jeu De Rôle) : jeu sur papier ou les joueurs incarne des personnages dans univers dirigé par le MJ
-- **MJ** (Maître du jeu) : personne qui dirige le jeu de rôle
-- 
+- **MJ** (Maître du Jeu) : personne qui dirige le jeu de rôle
+- **SD** (Seuil de Difficulté) : valeur minimale que le joueur doit faire au dé pour réussir son test.
+- **PA** (Pouvoir d'Arrêt) : définis le nombre de dégâts que l'armure absorbe quand elle est touché. 
