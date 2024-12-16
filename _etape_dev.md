@@ -27,7 +27,7 @@
 
 ### <a name="etape-0"></a>Étapes 0
 
-Schema merise : (à mettre à jour)
+Schema merise : (à mettre à jour)  
 ![](src\main\resoures\img\Diagramme-bdd.jpg "Diagramme BDD")
 
 Liste des tables et leur description :
