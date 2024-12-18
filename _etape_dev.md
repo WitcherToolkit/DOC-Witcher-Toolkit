@@ -52,7 +52,7 @@ Refonte du projet et travail plus poussé du schéma Merise. Puis mise en place 
 
 ### <a name="etape-1"></a>Étape 1
 
-Mise en place sur la partie des JPA, du jeu de données ainsi que du CRUD pour les éléments suivants : races, caractéristiques, compétences, sorts, rituels, signes.
+Mise en place sur la partie des JPA, du jeu de données ainsi que du CRUD pour les éléments suivants : races, **caractéristiques**, **compétences**, sorts, rituels, signes.
 - Sorts, Sorts et Signes sont finalement regroupés en une seule table : Magie
 - Les compétences concernent :
     - le job avec sa compétence exclusive,
