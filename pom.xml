@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>fr.meya.DOCWitcherToolkit</groupId>
@@ -36,7 +36,12 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.maven.doxia</groupId>
+            <artifactId>doxia-module-markdown</artifactId>
+            <version>2.0.0</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -81,11 +86,14 @@
             </plugin>
 
             <plugin>
+                <!-- Configuration du site -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M16</version>
+                <version>3.12.1</version>
                 <configuration>
+                    <sourceDirectory>src/site/markdown</sourceDirectory>
                     <outputDirectory>${project.build.directory}/site</outputDirectory>
+                    <siteDescriptor>src/site/markdown/_accueil.md</siteDescriptor>
                 </configuration>
                 <executions>
                     <execution>
@@ -95,13 +103,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.doxia</groupId>
-                        <artifactId>doxia-module-markdown</artifactId>
-                       <version>2.0.0-M12</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
