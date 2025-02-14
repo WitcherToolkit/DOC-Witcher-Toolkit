@@ -25,7 +25,7 @@ Le choix de la race (sorceleur, elfe, nain, humain ou alfelin) va jouer sur la r
 | Nilfgaard    | Neutre  | Neutre | Neutre | Craint et haïs | Neutre  |
 | Skellige     | Neutre  | Neutre | Neutre | Toléré         | Neutre  |
 | Dol Blathana | Haïs    | Neutre | Neutre | Toléré         | Neutre  |
-| Mahakam      | Mahakam | Neutre | Neutre | Toléré         | Neutre  |
+| Mahakam      | Tolérés | Neutre | Neutre | Toléré         | Neutre  |
 
 ## 2. Effectuer son parcours
 Le choix du parcours se fait en plusieurs étapes :
@@ -47,7 +47,7 @@ Cette étape est facultative lors de la création d'une fiche personnage.
 
 ## 3. Choisir sa profession
 Les professions disponibles sont les suivantes :
-– Artisan, barde, criminel, docteur, homme d'arme, mage, marchand, prêtre, sorceleur, noble
+– Artisan, barde, criminel, docteur, homme d'arme, mage, marchand, prêtre, sorceleur, noble.
 
 Le choix de la profession va influer sur plusieurs éléments :
 – Une compétence exclusive : la valeur dans cette compétence sera à définir lors de l'étape « Choisir ses compétences acquises ».
@@ -56,7 +56,13 @@ Le choix de la profession va influer sur plusieurs éléments :
 – Des compétences : les valeurs dans ces compétences seront à définir lors de l'étape « Choisir ses compétences acquises ».
 – Un équipement de départ : il faut choisir 5 éléments parmi une liste d'équipements. Cette liste d'équipement change en fonction du choix du job. Ces éléments seront mis dans l'inventaire.
 
-NB : Si le choix de la race est "sorceleur", la profession est **obligatoirement** sorceleur. Dans ce cas, il possède automatiquement tous les signes de base.
+NB :
+- Si le choix de la race est "sorceleur", la profession est **obligatoirement** sorceleur. Dans ce cas, il possède automatiquement tous les signes de base.
+- Si le choix de la profession est "mage" la réputation du personnage change et devient :
+
+ | Territoire | Nord           | Nilfgaard | Skellige | Dol Blathana | Mahakam |
+ |:-----------|:---------------|-----------|----------|--------------|---------|
+ | Mage       | Craint et haîs | Toléré    | Toléré   | Neutre       | Toléré  |
 
 ## 4. Choix des atouts magiques
 En fonction du métier choisi un certaint nombre atouts magiques sont à choisir.  
