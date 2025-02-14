@@ -30,24 +30,188 @@
 Schema merise : 
 ![Diagramme BDD](../images/MCD-2025-02-02.jpg)
 
-MLD :  
-magie = (idMagie INT, nom VARCHAR(60), cout VARCHAR(10), effet TEXT, portee VARCHAR(10), duree VARCHAR(10), elementaire VARCHAR(5), niveau VARCHAR(20), contre VARCHAR(20), profession VARCHAR(9));  
-caracteristique = (idCaractéristique INT, nom VARCHAR(16), code VARCHAR(4), description TEXT);  
-user = (idUser INT, pseudo VARCHAR(64), email VARCHAR(255), password VARCHAR(255), isAdmin LOGICAL);  
-rituel = (idRituel INT, nom VARCHAR(60), cout VARCHAR(10), effet TEXT, TempsPreparation INT, sd VARCHAR(7), duree VARCHAR(10), composant TEXT, niveau VARCHAR(20));  
-envoutement = (idEnvoutement INT, nom VARCHAR(60), cout VARCHAR(10), effet TEXT, prerequis TEXT, danger VARCHAR(6));  
-profession = (idProfession INT, nom VARCHAR(50), description TEXT);  
-race = (idRace INT, nom VARCHAR(50), categorie VARCHAR(50));  
-campagne = (idCampagne INT, nom VARCHAR(50), #idUser);  
-competence = (idCompetenceSpecifique INT, nom VARCHAR(50), description TEXT, codeCaracteristique VARCHAR(4), specialisation VARCHAR(20), prerequis VARCHAR(20), exclusif LOGICAL, #idProfession);  
-personnage = (idPersonnage INT, nomPersonnage VARCHAR(50), nomJoueur VARCHAR(50), nomImage VARCHAR(100), urlImage TEXT, genre CHAR(1), terreNatale VARCHAR(20), xp INT, age INT, bestiaire LOGICAL, #idRace, #idCampagne*, #idUser*);  
-profession_competence_personnage = (idProfessionCompetencePersonnage INT, valeurActuelle INT, valeurMax INT, #idProfession, #idCompetenceSpecifique, #idPersonnage);  
-historique = (idHistorique INT, typeHistorique VARCHAR(50), description TEXT, #idPersonnage);  
-inventaire = (idEnvoutement INT, nom VARCHAR(60), type VARCHAR(10), effet TEXT, quantité INT, #idPersonnage);  
-caracteristique_personnage = (idCaracteristiquePersonnage INT, valeurActuelle INT, valeurMax INT, #idPersonnage, #idCaractéristique);  
-magie_personnage = (#idPersonnage, #idMagie);  
-rituel_personnage = (#idPersonnage, #idRituel);  
-envoutement_personnage = (#idPersonnage, #idEnvoutement);  
+Script SQL :
+
+```sql
+CREATE TABLE magie(
+   idMagie INT,
+   nom VARCHAR(60) NOT NULL,
+   cout VARCHAR(10) NOT NULL,
+   effet TEXT NOT NULL,
+   portee VARCHAR(10) NOT NULL,
+   duree VARCHAR(10) NOT NULL,
+   elementaire VARCHAR(5) NOT NULL,
+   niveau VARCHAR(20) NOT NULL,
+   contre VARCHAR(20),
+   profession VARCHAR(9) NOT NULL,
+   PRIMARY KEY(idMagie)
+);
+
+CREATE TABLE caracteristique(
+   idCaractéristique INT,
+   nom VARCHAR(16) NOT NULL,
+   code VARCHAR(4) NOT NULL,
+   description TEXT NOT NULL,
+   PRIMARY KEY(idCaractéristique)
+);
+
+CREATE TABLE user(
+   idUser INT,
+   pseudo VARCHAR(64) NOT NULL,
+   email VARCHAR(255) NOT NULL,
+   password VARCHAR(255) NOT NULL,
+   isAdmin LOGICAL default false,
+   PRIMARY KEY(idUser),
+   UNIQUE(pseudo),
+   UNIQUE(email)
+);
+
+CREATE TABLE rituel(
+   idRituel INT,
+   nom VARCHAR(60) NOT NULL,
+   cout VARCHAR(10) NOT NULL,
+   effet TEXT NOT NULL,
+   TempsPreparation INT NOT NULL,
+   sd VARCHAR(7) NOT NULL,
+   duree VARCHAR(10) NOT NULL,
+   composant TEXT NOT NULL,
+   niveau VARCHAR(20) NOT NULL,
+   PRIMARY KEY(idRituel)
+);
+
+CREATE TABLE envoutement(
+   idEnvoutement INT,
+   nom VARCHAR(60) NOT NULL,
+   cout VARCHAR(10) NOT NULL,
+   effet TEXT NOT NULL,
+   prerequis TEXT NOT NULL,
+   danger VARCHAR(6) NOT NULL,
+   PRIMARY KEY(idEnvoutement)
+);
+
+CREATE TABLE profession(
+   idProfession INT,
+   nom VARCHAR(50) NOT NULL,
+   description TEXT NOT NULL,
+   PRIMARY KEY(idProfession)
+);
+
+CREATE TABLE race(
+   idRace INT,
+   nom VARCHAR(50) NOT NULL,
+   categorie VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idRace)
+);
+
+CREATE TABLE campagne(
+   idCampagne INT,
+   nom VARCHAR(50) NOT NULL,
+   idUser INT NOT NULL,
+   PRIMARY KEY(idCampagne),
+   FOREIGN KEY(idUser) REFERENCES user(idUser)
+);
+
+CREATE TABLE competence(
+   idCompetenceSpecifique INT,
+   nom VARCHAR(50) NOT NULL,
+   description TEXT NOT NULL,
+   codeCaracteristique VARCHAR(4),
+   specialisation VARCHAR(20) NOT NULL,
+   prerequis VARCHAR(20),
+   exclusif LOGICAL NOT NULL,
+   idProfession INT NOT NULL,
+   PRIMARY KEY(idCompetenceSpecifique),
+   FOREIGN KEY(idProfession) REFERENCES profession(idProfession)
+);
+
+CREATE TABLE personnage(
+   idPersonnage INT,
+   nomPersonnage VARCHAR(50),
+   nomJoueur VARCHAR(50),
+   nomImage VARCHAR(100),
+   urlImage TEXT,
+   genre CHAR(1),
+   terreNatale VARCHAR(20),
+   xp INT,
+   age INT,
+   bestiaire LOGICAL default false,
+   idRace INT NOT NULL,
+   idCampagne INT,
+   idUser INT,
+   PRIMARY KEY(idPersonnage),
+   FOREIGN KEY(idRace) REFERENCES race(idRace),
+   FOREIGN KEY(idCampagne) REFERENCES campagne(idCampagne),
+   FOREIGN KEY(idUser) REFERENCES user(idUser)
+);
+
+CREATE TABLE profession_competence_personnage(
+   idProfessionCompetencePersonnage INT,
+   valeurActuelle INT NOT NULL,
+   valeurMax INT NOT NULL,
+   idProfession INT NOT NULL,
+   idCompetenceSpecifique INT NOT NULL,
+   idPersonnage INT NOT NULL,
+   PRIMARY KEY(idProfessionCompetencePersonnage),
+   FOREIGN KEY(idProfession) REFERENCES profession(idProfession),
+   FOREIGN KEY(idCompetenceSpecifique) REFERENCES competence(idCompetenceSpecifique),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+);
+
+CREATE TABLE historique(
+   idHistorique INT,
+   typeHistorique VARCHAR(50),
+   description TEXT NOT NULL,
+   idPersonnage INT NOT NULL,
+   PRIMARY KEY(idHistorique),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+);
+
+CREATE TABLE inventaire(
+   idEnvoutement INT,
+   nom VARCHAR(60) NOT NULL,
+   type VARCHAR(10),
+   effet TEXT,
+   quantité INT,
+   idPersonnage INT NOT NULL,
+   PRIMARY KEY(idEnvoutement),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+);
+
+CREATE TABLE caracteristique_personnage(
+   idCaracteristiquePersonnage INT,
+   valeurActuelle INT NOT NULL,
+   valeurMax INT NOT NULL,
+   idPersonnage INT NOT NULL,
+   idCaractéristique INT NOT NULL,
+   PRIMARY KEY(idCaracteristiquePersonnage),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+   FOREIGN KEY(idCaractéristique) REFERENCES caracteristique(idCaractéristique)
+);
+
+CREATE TABLE magie_personnage(
+   idPersonnage INT,
+   idMagie INT,
+   PRIMARY KEY(idPersonnage, idMagie),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+   FOREIGN KEY(idMagie) REFERENCES magie(idMagie)
+);
+
+CREATE TABLE rituel_personnage(
+   idPersonnage INT,
+   idRituel INT,
+   PRIMARY KEY(idPersonnage, idRituel),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+   FOREIGN KEY(idRituel) REFERENCES rituel(idRituel)
+);
+
+CREATE TABLE envoutement_personnage(
+   idPersonnage INT,
+   idEnvoutement INT,
+   PRIMARY KEY(idPersonnage, idEnvoutement),
+   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+   FOREIGN KEY(idEnvoutement) REFERENCES envoutement(idEnvoutement)
+);
+```
 
   
 Liste des tables et leur description :
