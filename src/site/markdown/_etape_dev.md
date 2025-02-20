@@ -28,180 +28,202 @@
 ### <a name="etape-0"></a>Étapes 0
 
 Schema merise : 
-![Diagramme BDD](../images/MCD-2025-02-02.jpg)
+![Diagramme BDD](../images/MCD-Fiche-personnage.jpg)
 
 Script SQL :
 
 ```sql
 CREATE TABLE magie(
-   idMagie INT,
-   nom VARCHAR(60) NOT NULL,
-   cout VARCHAR(10) NOT NULL,
-   effet TEXT NOT NULL,
-   portee VARCHAR(10) NOT NULL,
-   duree VARCHAR(10) NOT NULL,
-   elementaire VARCHAR(5) NOT NULL,
-   niveau VARCHAR(20) NOT NULL,
-   contre VARCHAR(20),
-   profession VARCHAR(9) NOT NULL,
-   PRIMARY KEY(idMagie)
+    idMagie INT,
+    nom VARCHAR(60) NOT NULL,
+    cout VARCHAR(10) NOT NULL,
+    effet TEXT NOT NULL,
+    portee VARCHAR(10) NOT NULL,
+    duree VARCHAR(10) NOT NULL,
+    elementaire VARCHAR(5) NOT NULL,
+    niveau VARCHAR(20) NOT NULL,
+    contre VARCHAR(20),
+    profession VARCHAR(9) NOT NULL,
+    PRIMARY KEY(idMagie)
 );
 
 CREATE TABLE caracteristique(
-   idCaractéristique INT,
-   nom VARCHAR(16) NOT NULL,
-   code VARCHAR(4) NOT NULL,
-   description TEXT NOT NULL,
-   PRIMARY KEY(idCaractéristique)
+    idCaractéristique INT,
+    nom VARCHAR(16) NOT NULL,
+    code VARCHAR(4) NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY(idCaractéristique)
 );
 
-CREATE TABLE user(
-   idUser INT,
-   pseudo VARCHAR(64) NOT NULL,
-   email VARCHAR(255) NOT NULL,
-   password VARCHAR(255) NOT NULL,
-   isAdmin LOGICAL default false,
-   PRIMARY KEY(idUser),
-   UNIQUE(pseudo),
-   UNIQUE(email)
+CREATE TABLE _user(
+    idUser INT,
+    pseudo VARCHAR(64) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    isAdmin LOGICAL default false,
+    PRIMARY KEY(idUser),
+    UNIQUE(pseudo),
+    UNIQUE(email)
 );
 
 CREATE TABLE rituel(
-   idRituel INT,
-   nom VARCHAR(60) NOT NULL,
-   cout VARCHAR(10) NOT NULL,
-   effet TEXT NOT NULL,
-   TempsPreparation INT NOT NULL,
-   sd VARCHAR(7) NOT NULL,
-   duree VARCHAR(10) NOT NULL,
-   composant TEXT NOT NULL,
-   niveau VARCHAR(20) NOT NULL,
-   PRIMARY KEY(idRituel)
+    idRituel INT,
+    nom VARCHAR(60) NOT NULL,
+    cout VARCHAR(10) NOT NULL,
+    effet TEXT NOT NULL,
+    TempsPreparation INT NOT NULL,
+    sd VARCHAR(7) NOT NULL,
+    duree VARCHAR(10) NOT NULL,
+    composant TEXT NOT NULL,
+    niveau VARCHAR(20) NOT NULL,
+    PRIMARY KEY(idRituel)
 );
 
 CREATE TABLE envoutement(
-   idEnvoutement INT,
-   nom VARCHAR(60) NOT NULL,
-   cout VARCHAR(10) NOT NULL,
-   effet TEXT NOT NULL,
-   prerequis TEXT NOT NULL,
-   danger VARCHAR(6) NOT NULL,
-   PRIMARY KEY(idEnvoutement)
+    idEnvoutement INT,
+    nom VARCHAR(60) NOT NULL,
+    cout VARCHAR(10) NOT NULL,
+    effet TEXT NOT NULL,
+    prerequis TEXT NOT NULL,
+    danger VARCHAR(6) NOT NULL,
+    PRIMARY KEY(idEnvoutement)
 );
 
 CREATE TABLE profession(
-   idProfession INT,
-   nom VARCHAR(50) NOT NULL,
-   description TEXT NOT NULL,
-   PRIMARY KEY(idProfession)
+    idProfession INT,
+    nom VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY(idProfession)
 );
 
 CREATE TABLE race(
-   idRace INT,
-   nom VARCHAR(50) NOT NULL,
-   categorie VARCHAR(50) NOT NULL,
-   PRIMARY KEY(idRace)
+    idRace INT,
+    nom VARCHAR(50) NOT NULL,
+    PRIMARY KEY(idRace)
+);
+
+CREATE TABLE reputationWiki(
+    idReputation INT,
+    territoire VARCHAR(20) NOT NULL,
+    valeur VARCHAR(20) NOT NULL,
+    idRace INT NOT NULL,
+    PRIMARY KEY(idReputation),
+    FOREIGN KEY(idRace) REFERENCES race(idRace)
+);
+
+CREATE TABLE particularite(
+    idRace INT,
+    nom VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    idRace_1 INT NOT NULL,
+    PRIMARY KEY(idRace),
+    FOREIGN KEY(idRace_1) REFERENCES race(idRace)
 );
 
 CREATE TABLE campagne(
-   idCampagne INT,
-   nom VARCHAR(50) NOT NULL,
-   idUser INT NOT NULL,
-   PRIMARY KEY(idCampagne),
-   FOREIGN KEY(idUser) REFERENCES user(idUser)
+    idCampagne INT,
+    nom VARCHAR(50) NOT NULL,
+    uId TEXT NOT NULL,
+    password TEXT,
+    idUser INT NOT NULL,
+    PRIMARY KEY(idCampagne),
+    UNIQUE(uId),
+    FOREIGN KEY(idUser) REFERENCES _user(idUser)
 );
 
 CREATE TABLE competence(
-   idCompetenceSpecifique INT,
-   nom VARCHAR(50) NOT NULL,
-   description TEXT NOT NULL,
-   codeCaracteristique VARCHAR(4),
-   specialisation VARCHAR(20) NOT NULL,
-   prerequis VARCHAR(20),
-   exclusif LOGICAL NOT NULL,
-   idProfession INT NOT NULL,
-   PRIMARY KEY(idCompetenceSpecifique),
-   FOREIGN KEY(idProfession) REFERENCES profession(idProfession)
+    idCompetenceSpecifique INT,
+    nom VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
+    specialisation VARCHAR(20) NOT NULL,
+    prerequis VARCHAR(20),
+    exclusif LOGICAL NOT NULL,
+    idCaractéristique INT NOT NULL,
+    idProfession INT NOT NULL,
+    PRIMARY KEY(idCompetenceSpecifique),
+    FOREIGN KEY(idCaractéristique) REFERENCES caracteristique(idCaractéristique),
+    FOREIGN KEY(idProfession) REFERENCES profession(idProfession)
 );
 
 CREATE TABLE personnage(
-   idPersonnage INT,
-   nomPersonnage VARCHAR(50),
-   nomJoueur VARCHAR(50),
-   nomImage VARCHAR(100),
-   urlImage TEXT,
-   genre CHAR(1),
-   terreNatale VARCHAR(20),
-   xp INT,
-   age INT,
-   bestiaire LOGICAL default false,
-   idRace INT NOT NULL,
-   idCampagne INT,
-   idUser INT,
-   PRIMARY KEY(idPersonnage),
-   FOREIGN KEY(idRace) REFERENCES race(idRace),
-   FOREIGN KEY(idCampagne) REFERENCES campagne(idCampagne),
-   FOREIGN KEY(idUser) REFERENCES user(idUser)
-);
-
-CREATE TABLE profession_competence_personnage(
-   idProfessionCompetencePersonnage INT,
-   valeurActuelle INT NOT NULL,
-   valeurMax INT NOT NULL,
-   idProfession INT NOT NULL,
-   idCompetenceSpecifique INT NOT NULL,
-   idPersonnage INT NOT NULL,
-   PRIMARY KEY(idProfessionCompetencePersonnage),
-   FOREIGN KEY(idProfession) REFERENCES profession(idProfession),
-   FOREIGN KEY(idCompetenceSpecifique) REFERENCES competence(idCompetenceSpecifique),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
-);
-
-CREATE TABLE historique(
-   idHistorique INT,
-   typeHistorique VARCHAR(50),
-   description TEXT NOT NULL,
-   idPersonnage INT NOT NULL,
-   PRIMARY KEY(idHistorique),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+    idPersonnage INT,
+    nomPersonnage VARCHAR(50),
+    nomJoueur VARCHAR(50),
+    nomImage VARCHAR(100),
+    urlImage TEXT,
+    genre CHAR(1),
+    terreNatale VARCHAR(20),
+    xp INT,
+    age INT,
+    bestiaire LOGICAL default false,
+    historique TEXT,
+    idProfession INT NOT NULL,
+    idRace INT NOT NULL,
+    idCampagne INT,
+    idUser INT,
+    PRIMARY KEY(idPersonnage),
+    FOREIGN KEY(idProfession) REFERENCES profession(idProfession),
+    FOREIGN KEY(idRace) REFERENCES race(idRace),
+    FOREIGN KEY(idCampagne) REFERENCES campagne(idCampagne),
+    FOREIGN KEY(idUser) REFERENCES _user(idUser)
 );
 
 CREATE TABLE inventaire(
-   idEnvoutement INT,
-   nom VARCHAR(60) NOT NULL,
-   type VARCHAR(10),
-   effet TEXT,
-   quantité INT,
-   idPersonnage INT NOT NULL,
-   PRIMARY KEY(idEnvoutement),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+    idEnvoutement INT,
+    nom VARCHAR(60) NOT NULL,
+    type VARCHAR(10),
+    effet TEXT,
+    quantité INT,
+    idPersonnage INT NOT NULL,
+    PRIMARY KEY(idEnvoutement),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
 );
 
 CREATE TABLE caracteristique_personnage(
-   idCaracteristiquePersonnage INT,
-   valeurActuelle INT NOT NULL,
-   valeurMax INT NOT NULL,
-   idPersonnage INT NOT NULL,
-   idCaractéristique INT NOT NULL,
-   PRIMARY KEY(idCaracteristiquePersonnage),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
-   FOREIGN KEY(idCaractéristique) REFERENCES caracteristique(idCaractéristique)
+    idCaracteristiquePersonnage INT,
+    valeurActuelle INT NOT NULL,
+    valeurMax INT NOT NULL,
+    idPersonnage INT NOT NULL,
+    idCaractéristique INT NOT NULL,
+    PRIMARY KEY(idCaracteristiquePersonnage),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+    FOREIGN KEY(idCaractéristique) REFERENCES caracteristique(idCaractéristique)
+);
+
+CREATE TABLE reputationPersonnalisee(
+    idReputation INT,
+    territoire VARCHAR(20) NOT NULL,
+    valeur VARCHAR(20) NOT NULL,
+    idPersonnage INT NOT NULL,
+    PRIMARY KEY(idReputation),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage)
+);
+
+CREATE TABLE competence_personnage(
+    idCaracteristiquePersonnage INT,
+    valeurActuelle INT NOT NULL,
+    valeurMax INT NOT NULL,
+    idPersonnage INT NOT NULL,
+    idCompetenceSpecifique INT NOT NULL,
+    PRIMARY KEY(idCaracteristiquePersonnage),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+    FOREIGN KEY(idCompetenceSpecifique) REFERENCES competence(idCompetenceSpecifique)
 );
 
 CREATE TABLE magie_personnage(
-   idPersonnage INT,
-   idMagie INT,
-   PRIMARY KEY(idPersonnage, idMagie),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
-   FOREIGN KEY(idMagie) REFERENCES magie(idMagie)
+    idPersonnage INT,
+    idMagie INT,
+    PRIMARY KEY(idPersonnage, idMagie),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+    FOREIGN KEY(idMagie) REFERENCES magie(idMagie)
 );
 
 CREATE TABLE rituel_personnage(
-   idPersonnage INT,
-   idRituel INT,
-   PRIMARY KEY(idPersonnage, idRituel),
-   FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
-   FOREIGN KEY(idRituel) REFERENCES rituel(idRituel)
+    idPersonnage INT,
+    idRituel INT,
+    PRIMARY KEY(idPersonnage, idRituel),
+    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
+    FOREIGN KEY(idRituel) REFERENCES rituel(idRituel)
 );
 
 CREATE TABLE envoutement_personnage(
@@ -211,6 +233,7 @@ CREATE TABLE envoutement_personnage(
    FOREIGN KEY(idPersonnage) REFERENCES personnage(idPersonnage),
    FOREIGN KEY(idEnvoutement) REFERENCES envoutement(idEnvoutement)
 );
+
 ```
 
   
