@@ -11,7 +11,68 @@ git add .
 git commit -m "commentaire"
 git push -u origin main
 ````
-Configuration des packages pour une architecture héxagonale et reste
+## Architecture de l'application
+```
+┌──────────────┐
+│  Angular App │  (Frontend)
+└──────┬───────┘
+       │ HTTP/REST
+       ↓
+┌──────────────┐
+│QuestConnect  │  (API Gateway + Sécurité)
+│              │  - Authentification JWT
+│              │  - Gestion des rôles
+│              │  - Passerelle (pass-through)
+└──────┬───────┘
+       │ HTTP/REST
+       ↓
+┌──────────────┐
+│WitcherToolKit│  (Business Logic)
+│              │  - Logique métier
+│              │  - Validation
+│              │  - Mapping DTO ↔ Entité
+└──────┬───────┘
+       │ JPA/Hibernate
+       ↓
+┌──────────────┐
+│   Database   │
+└──────────────┘
+```
+
+## Exemple de Flux Détaillé - Création d'un Personnage
+```
+1. Angular
+   ↓ POST /api/personnages + JWT
+   
+2. QuestConnect
+   ↓ Valide JWT + rôles
+   ↓ Forward POST /personnages
+   
+3. WitcherToolKit - Controller (Adapter In)
+   ↓ Reçoit PersonnageVolatile
+   
+4. WitcherToolKit - Service (Domain)
+   ↓ DTO → Entité
+   ↓ Logique métier
+   
+5. WitcherToolKit - Repository (Adapter Out)
+   ↓ Save en BDD
+   
+6. WitcherToolKit - Service
+   ↓ Entité → DTO
+   
+7. WitcherToolKit - Controller
+   ↓ ResponseEntity<PersonnageVolatile> (201 Created)
+   
+8. QuestConnect
+   ↓ Forward response
+   
+9. Angular
+   ↓ Récupère PersonnageVolatile avec ID
+   ↓ Navigate vers /personnages/{id}
+```
+
+## Configuration des packages pour une architecture héxagonale et REST
 ```
 fr.meya.witcher
 |	application
