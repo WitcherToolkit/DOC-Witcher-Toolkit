@@ -11,10 +11,10 @@
 |       N°        | Description                                                                                                                                     | Date       |   Etat   |
 |:---------------:|:------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:--------:|
 |  [0](#etape-0)  | - Revoir de MDC<br/>- Mettre en place les différentes tâches <br/>- Créer un jeux de donnée                                                     | 01/12/2024 |    ok    |
-|  [1](#etape-1)  | - Faire le CRUD pour la partie wiki                                                                                                             | 22/12/2024 | en cours |
+|  [1](#etape-1)  | - Faire le CRUD pour la partie wiki                                                                                                             | 22/12/2024 | front ok |
 |  [2](#etape-2)  | - Faire le CRUD pour la partie personnage                                                                                                       | 05/01/2025 | a faire  |
 |  [3](#etape-3)  | - Connecter le back à la BDD<br/>- Faire la partie connexion/déconnexion avec un rôle admin et utilisateur<br/>- Redirection vers la bonne page | 02/02/2025 | a faire  |
-|  [4](#etape-4)  | - Coder la partie front afin d'avoir un visuel de base puis le connecter au back                                                                | 23/02/2025 | en cours |
+|  [4](#etape-4)  | - Coder la partie front afin d'avoir un visuel de base puis le connecter au back                                                                | 23/02/2025 |    ok    |
 |  [5](#etape-5)  | - Modification et création d'un profil                                                                                                          | 16/03/2025 | a faire  |
 |  [6](#etape-6)  | - Préparer la structure d'un nouvelle API spécifique au Magasin                                                                                 |            |          |
 |  [7](#etape-7)  | - Gestion et consultation des marchandises                                                                                                      |            |          |

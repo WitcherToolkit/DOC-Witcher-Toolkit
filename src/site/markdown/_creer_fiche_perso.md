@@ -19,13 +19,13 @@ Voici les différentes étapes de création d'une ficher personnage :
 ## 1. Choisir une race
 Le choix de la race (sorceleur, elfe, nain, humain ou alfelin) va jouer sur la réputation que le personnage va avoir :
 
-| Territoire   | Humain  | Elfe   | Nain   | Sorceleur      | Alfelin |
-|:-------------|:--------|--------|--------|----------------|---------|
-| Nord         | Neutre  | Haïs   | Toléré | Craint et haïs | Toléré  |
-| Nilfgaard    | Neutre  | Neutre | Neutre | Craint et haïs | Neutre  |
-| Skellige     | Neutre  | Neutre | Neutre | Toléré         | Neutre  |
-| Dol Blathana | Haïs    | Neutre | Neutre | Toléré         | Neutre  |
-| Mahakam      | Tolérés | Neutre | Neutre | Toléré         | Neutre  |
+| Territoire   | Humain  | Elfe   | Nain   | Sorceleur      | Halfelin |
+|:-------------|:--------|--------|--------|----------------|----------|
+| Nord         | Neutre  | Haïs   | Toléré | Craint et haïs | Toléré   |
+| Nilfgaard    | Neutre  | Neutre | Neutre | Craint et haïs | Neutre   |
+| Skellige     | Neutre  | Neutre | Neutre | Toléré         | Neutre   |
+| Dol Blathana | Haïs    | Neutre | Neutre | Toléré         | Neutre   |
+| Mahakam      | Tolérés | Neutre | Neutre | Toléré         | Neutre   |
 
 ## 2. Effectuer son parcours
 Le choix du parcours se fait en plusieurs étapes :
