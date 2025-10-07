@@ -18,25 +18,45 @@ git push -u origin main
 └──────┬───────┘
        │ HTTP/REST
        ↓
-┌──────────────┐
-│QuestConnect  │  (API Gateway + Sécurité)
-│              │  - Authentification JWT
-│              │  - Gestion des rôles
-│              │  - Passerelle (pass-through)
-└──────┬───────┘
-       │ HTTP/REST
-       ↓
-┌──────────────┐
-│WitcherToolKit│  (Business Logic)
-│              │  - Logique métier
-│              │  - Validation
-│              │  - Mapping DTO ↔ Entité
-└──────┬───────┘
-       │ JPA/Hibernate
-       ↓
-┌──────────────┐
-│   Database   │
-└──────────────┘
+┌──────────────────────────────────────────┐
+│          QuestConnect                    │  (API Gateway + Sécurité)
+│                                          │  - Authentification JWT
+│                                          │  - Gestion des rôles
+│                                          │  - Routage vers les services
+└────┬─────────────────┬─────────────┬────┘
+     │ HTTP/REST       │ HTTP/REST   │ HTTP/REST
+     ↓                 ↓             ↓
+┌────────────┐  ┌──────────────┐  ┌───────────────┐
+│WitcherTool │  │WitcherMarket │  │WitcherResolver│
+│    Kit     │  │              │  │               │
+│            │  │  (Commerce)  │  │   (Combat)    │
+│(Personnages│  │  - Objets    │  │  - Initiative │
+│ & Règles)  │  │  - Inventaire│  │  - Tests      │
+│            │  │  - Boutique  │  │  - Résolution │
+└─────┬──────┘  └──────┬───────┘  └───────┬───────┘
+      │ JPA            │ JPA              │ JPA
+      │ schema=witcher │ schema=market    │ schema=resolver
+      ↓                ↓                  ↓
+┌─────────────────────────────────────────────┐
+│              PostgreSQL Database            │
+│                                             │
+│  ┌─────────────┐  ┌─────────────┐  ┌──────────────┐
+│  │   WITCHER   │  │   MARKET    │  │   RESOLVER   │
+│  │   (schema)  │  │   (schema)  │  │   (schema)   │
+│  ├─────────────┤  ├─────────────┤  ├──────────────┤
+│  │personnages  │  │objets       │  │combats       │
+│  │classes      │  │inventaires  │  │initiatives   │
+│  │competences  │  │prix         │  │tests         │
+│  │races        │  │stocks       │  │actions       │
+│  │...          │  │...          │  │...           │
+│  └─────────────┘  └─────────────┘  └──────────────┘
+│                                            │
+│  ┌──────────────────────────────┐          │
+│  │   SHARED (schema optionnel)  │          │
+│  ├──────────────────────────────┤          │
+│  │utilisateurs                  │          │
+│  └──────────────────────────────┘          │
+└────────────────────────────────────────────┘
 ```
 
 ## Exemple de Flux Détaillé - Création d'un Personnage
@@ -116,3 +136,39 @@ fr.meya.witcher
 - **messages** : Transport Objects pour la communication extérieure (DTO, VO, etc.).
     - **request** : Objets représentant les requêtes entrant dans le système.
     - **response** : Objets pour les réponses sortantes.
+
+### exemple de configue pour la suite
+#### Configuration dans chaque service
+WitcherToolKit - application.properties :
+```
+propertiesspring.datasource.url=jdbc:postgresql://localhost:5432/witcher_rpg
+spring.jpa.properties.hibernate.default_schema=witcher
+```
+WitcherMarket - application.properties :
+```
+propertiesspring.datasource.url=jdbc:postgresql://localhost:5432/witcher_rpg
+spring.jpa.properties.hibernate.default_schema=market
+```
+WitcherResolver - application.properties :
+```
+propertiesspring.datasource.url=jdbc:postgresql://localhost:5432/witcher_rpg
+spring.jpa.properties.hibernate.default_schema=resolver
+```
+Exemple de relations cross-schema :
+```
+sql-- Dans le schema MARKET
+CREATE TABLE market.inventaires (
+id BIGSERIAL PRIMARY KEY,
+personnage_id BIGINT REFERENCES witcher.personnages(id),
+objet_id BIGINT REFERENCES market.objets(id),
+quantite INT
+);
+
+-- Dans le schema RESOLVER
+CREATE TABLE resolver.combats (
+id BIGSERIAL PRIMARY KEY,
+personnage_id BIGINT REFERENCES witcher.personnages(id),
+initiative INT,
+points_vie_actuels INT
+);
+```
